@@ -26,7 +26,7 @@ public final class ByteUtils {
         return null == body ? StringUtils.EMPTY : new String(body, UTF8);
     }
 
-    public static String string(final InputStream input){
+    public static String string(final InputStream input) {
         return string(input, UTF8);
     }
 

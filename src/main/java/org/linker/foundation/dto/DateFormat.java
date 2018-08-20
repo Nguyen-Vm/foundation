@@ -1,6 +1,6 @@
 package org.linker.foundation.dto;
 
-public enum DateFormat{
+public enum DateFormat {
     NumDate("yyyyMMdd"),
 
     StrikeDate("yyyy-MM-dd"),
@@ -11,7 +11,7 @@ public enum DateFormat{
 
     public String pattern;
 
-    DateFormat(String pattern){
+    DateFormat(String pattern) {
         this.pattern = pattern;
     }
 }

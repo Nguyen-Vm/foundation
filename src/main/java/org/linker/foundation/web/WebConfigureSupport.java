@@ -16,14 +16,16 @@ import java.util.Map;
  */
 public abstract class WebConfigureSupport {
 
-    /** 全局异常处理 **/
+    /**
+     * 全局异常处理
+     **/
     @ControllerAdvice
     public static class GlobalExceptionHandle {
         @ExceptionHandler(value = Exception.class)
         @ResponseBody
         private Map<String, Object> exceptionHandle(HttpServletRequest request,
                                                     HttpServletResponse response,
-                                                    Exception e){
+                                                    Exception e) {
             Map<String, Object> modelMap = new HashMap<>();
             modelMap.put("result", false);
             modelMap.put("code", e instanceof AppException ? ((AppException) e).code.code() : "S00001");

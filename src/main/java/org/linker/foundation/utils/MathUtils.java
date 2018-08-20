@@ -11,16 +11,18 @@ import java.util.Random;
 public final class MathUtils {
     private static final Random RANDOM = new Random();
 
-    private MathUtils() {}
+    private MathUtils() {
+    }
 
     /**
      * 返回长度为 length 的随机数
+     *
      * @param length
      * @return
      */
     public static String shuffleNum(int length) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i< length; i++) {
+        for (int i = 0; i < length; i++) {
             sb.append(RANDOM.nextInt(10));
         }
         return sb.toString();
@@ -28,6 +30,7 @@ public final class MathUtils {
 
     /**
      * val 是否在 from 和 to 之间
+     *
      * @param val
      * @param from
      * @param to
@@ -44,6 +47,7 @@ public final class MathUtils {
 
     /**
      * 除于,对结果向上取整
+     *
      * @param total
      * @param size
      * @return
@@ -52,7 +56,7 @@ public final class MathUtils {
         if (nvl(total) <= 0 || nvl(size) <= 0) {
             return 0;
         }
-        return (int)(Math.ceil(total.doubleValue() / size.doubleValue()));
+        return (int) (Math.ceil(total.doubleValue() / size.doubleValue()));
     }
 
     public static BigDecimal nvl(final BigDecimal num) {

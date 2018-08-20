@@ -18,7 +18,7 @@ public enum CommonCode implements IMessageCode {
     private final String code;
     private final String desc;
 
-    CommonCode(String code, String desc){
+    CommonCode(String code, String desc) {
         this.code = code;
         this.desc = desc;
     }

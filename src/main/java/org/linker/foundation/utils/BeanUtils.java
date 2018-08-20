@@ -29,7 +29,9 @@ public class BeanUtils {
                         && ctx.getSourceType().equals(ctx.getDestinationType()));
     }
 
-    /** 对象克隆 **/
+    /**
+     * 对象克隆
+     **/
     public static <Source, Target> Target map(final Source source, final Class<Target> destType) {
         if (source == null || destType == null) {
             return null;
@@ -43,7 +45,9 @@ public class BeanUtils {
         }
     }
 
-    /** 集合对象克隆 **/
+    /**
+     * 集合对象克隆
+     **/
     public static <Source, Target> List<Target> map(final Collection<Source> sources, final Class<Target> targetType) {
         List<Target> targets = Lists.newArrayListWithExpectedSize(sources.size());
         for (Source source : sources) {
@@ -58,12 +62,16 @@ public class BeanUtils {
         }
     }
 
-    /** Bean转Map **/
+    /**
+     * Bean转Map
+     **/
     public static <T> T map2Bean(final Map<String, Object> source, final Class<T> clazz) {
         return JsonUtils.parseObject(new JSONObject(source).toString(), clazz);
     }
 
-    /** Map转Bean **/
+    /**
+     * Map转Bean
+     **/
     public static Map<String, Object> bean2Map(Object source) {
         return (JSONObject) JSON.toJSON(source);
     }

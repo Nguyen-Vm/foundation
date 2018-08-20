@@ -20,10 +20,10 @@ public class SpringBeanHelper implements ApplicationContextAware {
         SpringBeanHelper.ctx = applicationContext;
     }
 
-    public static <T> T getBean(Class<T> clazz){
+    public static <T> T getBean(Class<T> clazz) {
         try {
             return ctx.getBean(clazz);
-        }catch (NoSuchBeanDefinitionException e){
+        } catch (NoSuchBeanDefinitionException e) {
             log.warn("no qualifying bean of type: {}", clazz);
             return null;
         }

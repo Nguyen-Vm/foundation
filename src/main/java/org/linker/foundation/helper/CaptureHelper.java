@@ -23,7 +23,8 @@ public final class CaptureHelper {
     private static final Logger LOG = LoggerFactory.getLogger(CaptureHelper.class);
     private static final ExecutorService CAPTURE_ES = ThreadFactoryHelper.newCachedThreadPool(64, "CAPTURE_ES");
 
-    private CaptureHelper() {}
+    private CaptureHelper() {
+    }
 
 
     /**
@@ -31,15 +32,15 @@ public final class CaptureHelper {
      */
     public static <T> void async(Runner runner, Consumer<ResultSet<T>> consumer) {
         CAPTURE_ES.submit(() -> {
-           Throwable cause = null;
-           try {
-               if (null != runner) {
-                   runner.run();
-               }
-           } catch (Exception e) {
-               cause = e;
-           }
-           consumer(consumer, cause, null);
+            Throwable cause = null;
+            try {
+                if (null != runner) {
+                    runner.run();
+                }
+            } catch (Exception e) {
+                cause = e;
+            }
+            consumer(consumer, cause, null);
         });
     }
 

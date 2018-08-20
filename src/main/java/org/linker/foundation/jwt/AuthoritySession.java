@@ -6,7 +6,7 @@ package org.linker.foundation.jwt;
  */
 public class AuthoritySession {
 
-    public Integer pubkeyCode;
+    public Integer pubKeyCode;
 
     public Integer signatureCode;
 

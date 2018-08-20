@@ -23,7 +23,9 @@ public final class ThreadFactoryHelper {
     private ThreadFactoryHelper() {
     }
 
-    /** 创建带缓存的线程池 **/
+    /**
+     * 创建带缓存的线程池
+     **/
     public static ExecutorService newCachedThreadPool(String name) {
         return new ThreadPoolExecutor(0, MAX_THREADS, 60L, TimeUnit.SECONDS, new SynchronousQueue<>(), threadFactoryOf(name));
     }

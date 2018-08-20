@@ -8,7 +8,6 @@ import redis.clients.jedis.JedisPoolConfig;
 /**
  * @author RWM
  * @date 2018/3/5
- *
  * @description Redis连接池
  */
 public class RedisPool {
@@ -26,7 +25,7 @@ public class RedisPool {
     private static Boolean testOnBorrow = Boolean.parseBoolean(PropertiesUtils.getProperty("redis.test.borrow", "true"));
     private static Boolean testOnReturn = Boolean.parseBoolean(PropertiesUtils.getProperty("redis.test.return", "false"));
 
-    private static void initPool(){
+    private static void initPool() {
         JedisPoolConfig config = new JedisPoolConfig();
         config.setMaxTotal(maxTotal);
         config.setMaxIdle(maxIdle);
@@ -37,22 +36,22 @@ public class RedisPool {
 
         config.setBlockWhenExhausted(true);
 
-        pool = new JedisPool(config, redisIp, redisPort, 1000*2);
+        pool = new JedisPool(config, redisIp, redisPort, 1000 * 2);
     }
 
     static {
         initPool();
     }
 
-    public static Jedis getResource(){
+    public static Jedis getResource() {
         return pool.getResource();
     }
 
-    public static void returnBrokenResource(Jedis jedis){
+    public static void returnBrokenResource(Jedis jedis) {
         pool.returnBrokenResource(jedis);
     }
 
-    public static void returnResource(Jedis jedis){
+    public static void returnResource(Jedis jedis) {
         pool.returnResource(jedis);
     }
 

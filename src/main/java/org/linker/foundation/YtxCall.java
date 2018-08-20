@@ -49,7 +49,7 @@ public class YtxCall {
         });
     }
 
-    private static List<Pair<String, String>> headers(String authorization){
+    private static List<Pair<String, String>> headers(String authorization) {
         List<Pair<String, String>> headers = Lists.newArrayList(
                 new Pair<>("Accept", "application/json"),
                 new Pair<>("Content-Type", "application/json;charset=utf-8"),

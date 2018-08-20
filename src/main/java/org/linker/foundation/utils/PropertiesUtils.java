@@ -11,7 +11,6 @@ import java.util.Properties;
 /**
  * @author RWM
  * @date 2018/1/28
- *
  * @description 配置文件工具类
  */
 public class PropertiesUtils {
@@ -21,28 +20,28 @@ public class PropertiesUtils {
     private static Properties props;
 
     static {
-        String fileName = "application.properties";
+        String fileName = "redis.properties";
         props = new Properties();
         try {
             props.load(new InputStreamReader(PropertiesUtils.class.getClassLoader()
-                    .getResourceAsStream(fileName),"UTF-8"));
+                    .getResourceAsStream(fileName), "UTF-8"));
         } catch (IOException e) {
-            log.error("配置文件读取异常",e);
+            log.error("配置文件读取异常", e);
         }
     }
 
-    public static String getProperty(String key){
+    public static String getProperty(String key) {
         String value = props.getProperty(key.trim());
-        if(StringUtils.isBlank(value)){
+        if (StringUtils.isBlank(value)) {
             return null;
         }
         return value.trim();
     }
 
-    public static String getProperty(String key,String defaultValue){
+    public static String getProperty(String key, String defaultValue) {
 
         String value = props.getProperty(key.trim());
-        if(StringUtils.isBlank(value)){
+        if (StringUtils.isBlank(value)) {
             value = defaultValue;
         }
         return value.trim();

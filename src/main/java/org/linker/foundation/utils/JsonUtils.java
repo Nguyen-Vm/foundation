@@ -14,11 +14,11 @@ import java.util.List;
  */
 public class JsonUtils {
 
-    private JsonUtils(){
+    private JsonUtils() {
 
     }
 
-    public static String toJSONString(final Object o, SerializerFeature... features){
+    public static String toJSONString(final Object o, SerializerFeature... features) {
         SerializerFeature[] sfArray = !CollectionUtils.isNullOrEmpty(features) ? features : new SerializerFeature[]{
                 SerializerFeature.QuoteFieldNames,
                 SerializerFeature.WriteMapNullValue,
@@ -31,31 +31,31 @@ public class JsonUtils {
         return JSON.toJSONString(o, new SerializeFilter[0], sfArray);
     }
 
-    public static String toJSONString(final Object o, SerializeFilter filter, SerializerFeature... features){
+    public static String toJSONString(final Object o, SerializeFilter filter, SerializerFeature... features) {
         return JSON.toJSONString(o, filter, features);
     }
 
-    public static <T> T parseObject(final byte[] body, final Class<T> clazz){
+    public static <T> T parseObject(final byte[] body, final Class<T> clazz) {
         return null == body ? null : JSON.parseObject(body, clazz);
     }
 
-    public static <T> byte[] toJSONBytes(final T data){
+    public static <T> byte[] toJSONBytes(final T data) {
         return JSON.toJSONBytes(data);
     }
 
-    public static <T> T parseObject(String body, final Class<T> clazz){
+    public static <T> T parseObject(String body, final Class<T> clazz) {
         return JSON.parseObject(body, clazz);
     }
 
-    public static <T> List<T> parseArray(String text, final Class<T> clazz){
+    public static <T> List<T> parseArray(String text, final Class<T> clazz) {
         return JSON.parseArray(text, clazz);
     }
 
-    public static JSONObject toJSon(final Object javaObject){
+    public static JSONObject toJSon(final Object javaObject) {
         return (JSONObject) JSON.toJSON(javaObject);
     }
 
-    public static JSONObject parseObject(String text){
+    public static JSONObject parseObject(String text) {
         return JSON.parseObject(text);
     }
 

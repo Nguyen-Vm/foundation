@@ -26,7 +26,7 @@ public class DesAlgorithm {
 
             decryptCipher = Cipher.getInstance(ALGORITHM);
             decryptCipher.init(Cipher.DECRYPT_MODE, key);
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("new DES algorithm error.....", e);
         }
     }
@@ -38,11 +38,11 @@ public class DesAlgorithm {
     /**
      * 加密字符串
      */
-    public String encrypt(String strIn){
+    public String encrypt(String strIn) {
         try {
 //            return Hex.encodeHexString(encrypt(strIn.getBytes()));
             return CryptUtils.toHex(encrypt(strIn.getBytes()));
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("DES algorithm encrypt error.....", e);
         }
     }
@@ -53,7 +53,7 @@ public class DesAlgorithm {
     public String decrypt(String strIn) {
         try {
             return new String(decrypt(CryptUtils.hex2Bytes(strIn)));
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("DES algorithm decrypt error.....", e);
         }
     }
@@ -83,7 +83,7 @@ public class DesAlgorithm {
     /**
      * 从指定字符串生成密钥，密钥所需的字节数组长度为8位 不足8位时后面补0，超出8位只取前8位
      */
-    private Key createKey(String secret){
+    private Key createKey(String secret) {
         byte[] bs = new byte[8];
         byte[] bytes = secret.getBytes();
         for (int i = 0; i < bytes.length && i < bs.length; i++) {

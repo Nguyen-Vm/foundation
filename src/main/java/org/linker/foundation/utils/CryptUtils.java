@@ -31,6 +31,7 @@ public class CryptUtils {
     private static MessageDigest MD5;
     private static MessageDigest MD4;
     private static MessageDigest MD2;
+
     static {
         try {
             SHA1 = MessageDigest.getInstance("SHA-1");//SHA=SHA-1
@@ -44,14 +45,14 @@ public class CryptUtils {
 
     /**
      * Base64编码
-     * **/
+     **/
     public static String encodeBase64(String val) {
         return ByteUtils.string(Base64.getEncoder().encode(val.getBytes()));
     }
 
     /**
      * Base64解码
-     * **/
+     **/
     public static String decodeBase64(String val) {
         return ByteUtils.string(Base64.getDecoder().decode(val));
     }
@@ -138,7 +139,9 @@ public class CryptUtils {
         return DigestUtils.md2Hex(val.getBytes());
     }
 
-    /** 字节数组转十六进制字符串 **/
+    /**
+     * 字节数组转十六进制字符串
+     **/
     public static String toHex(byte[] digest) {
         StringBuffer hexstr = new StringBuffer();
         String shaHex;
@@ -152,23 +155,25 @@ public class CryptUtils {
         return hexstr.toString();
     }
 
-    /** 16 进制字符串字节数组 **/
-    public static byte[] hex2Bytes(String src){
-        byte[] res = new byte[ src.length() / 2];
+    /**
+     * 16 进制字符串字节数组
+     **/
+    public static byte[] hex2Bytes(String src) {
+        byte[] res = new byte[src.length() / 2];
         char[] chs = src.toCharArray();
-        for(int i = 0, c = 0; i < chs.length; i += 2, c++){
-            res[c] = (byte) (Integer.parseInt(new String(chs,i,2), 16));
+        for (int i = 0, c = 0; i < chs.length; i += 2, c++) {
+            res[c] = (byte) (Integer.parseInt(new String(chs, i, 2), 16));
         }
         return res;
     }
 
-    public static String jdkHmacMD5(String val){
+    public static String jdkHmacMD5(String val) {
         try {
             KeyGenerator keyGenerator = KeyGenerator.getInstance("HmacMD5");// 初始化KeyGenerator
             SecretKey secretKey = keyGenerator.generateKey();// 产生密钥
             byte[] key = secretKey.getEncoded();// 获得密钥
 
-            key = Hex.decodeHex(new char[] {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a',});
+            key = Hex.decodeHex(new char[]{'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a',});
 
             SecretKey restoreSecretKey = new SecretKeySpec(key, "HmacMD5");// 还原密钥
 

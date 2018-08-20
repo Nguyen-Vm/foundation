@@ -14,7 +14,6 @@ import java.util.List;
 /**
  * @author RWM
  * @date 2018/3/5
- *
  * @description 分布式Redis连接池
  */
 public class RedisSharedPool {
@@ -34,7 +33,7 @@ public class RedisSharedPool {
     private static String redisIp2 = PropertiesUtils.getProperty("redis2.ip");
     private static Integer redisPort2 = Integer.parseInt(PropertiesUtils.getProperty("redis2.port"));
 
-    private static void initPool(){
+    private static void initPool() {
         JedisPoolConfig config = new JedisPoolConfig();
         config.setMaxTotal(maxTotal);
         config.setMaxIdle(maxIdle);
@@ -45,8 +44,8 @@ public class RedisSharedPool {
 
         config.setBlockWhenExhausted(true);
 
-        JedisShardInfo jedisShardInfo1 = new JedisShardInfo(redisIp1, redisPort1, 2*1000);
-        JedisShardInfo jedisShardInfo2 = new JedisShardInfo(redisIp2, redisPort2, 2*1000);
+        JedisShardInfo jedisShardInfo1 = new JedisShardInfo(redisIp1, redisPort1, 2 * 1000);
+        JedisShardInfo jedisShardInfo2 = new JedisShardInfo(redisIp2, redisPort2, 2 * 1000);
 
         List<JedisShardInfo> jedisShardInfoList = Lists.newArrayList(jedisShardInfo1, jedisShardInfo2);
         pool = new ShardedJedisPool(config, jedisShardInfoList, Hashing.MURMUR_HASH, Sharded.DEFAULT_KEY_TAG_PATTERN);
@@ -56,15 +55,15 @@ public class RedisSharedPool {
         initPool();
     }
 
-    public static ShardedJedis getResource(){
+    public static ShardedJedis getResource() {
         return pool.getResource();
     }
 
-    public static void returnBrokenResource(ShardedJedis jedis){
+    public static void returnBrokenResource(ShardedJedis jedis) {
         pool.returnBrokenResource(jedis);
     }
 
-    public static void returnResource(ShardedJedis jedis){
+    public static void returnResource(ShardedJedis jedis) {
         pool.returnResource(jedis);
     }
 

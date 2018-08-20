@@ -22,10 +22,12 @@ public final class DateUtils {
     public static final long DAY_TIME = 24 * 60 * MINUTE_TIME;
     private static final Date MIN = DateUtils.ofDate("19700101", DateFormat.NumDate);
 
-    private DateUtils() {}
+    private DateUtils() {
+    }
 
     /**
      * 给定 format 将 date 转换成 string
+     *
      * @param date
      * @param format
      * @return
@@ -36,6 +38,7 @@ public final class DateUtils {
 
     /**
      * 给定 format 将 localDate 转换成 string
+     *
      * @param localDate
      * @param format
      * @return
@@ -46,6 +49,7 @@ public final class DateUtils {
 
     /**
      * 给定 format 将 localDateTime 转换成 string
+     *
      * @param localDateTime
      * @param format
      * @return
@@ -56,6 +60,7 @@ public final class DateUtils {
 
     /**
      * 给定 format 将毫秒时间戳 转换成 string
+     *
      * @param time
      * @param format
      * @return
@@ -66,6 +71,7 @@ public final class DateUtils {
 
     /**
      * 给定 format 将 dateStr 转换成 Date
+     *
      * @param dateStr
      * @param format
      * @return
@@ -80,6 +86,7 @@ public final class DateUtils {
 
     /**
      * 将 毫秒时间戳 转换成 Date
+     *
      * @param time
      * @return
      */
@@ -89,6 +96,7 @@ public final class DateUtils {
 
     /**
      * 给定 format 将 dateStr 转换成 LocalDate
+     *
      * @param dateStr
      * @param format
      * @return
@@ -99,6 +107,7 @@ public final class DateUtils {
 
     /**
      * 将 毫秒时间戳 转换成 LocalDate
+     *
      * @param time
      * @return
      */
@@ -108,6 +117,7 @@ public final class DateUtils {
 
     /**
      * 给定 format 将 dateStr 转换成 LocalDateTime
+     *
      * @param dateStr
      * @param format
      * @return
@@ -118,6 +128,7 @@ public final class DateUtils {
 
     /**
      * 将 毫秒时间戳 转换成 LocalDateTime
+     *
      * @param time
      * @return
      */
@@ -126,7 +137,6 @@ public final class DateUtils {
     }
 
     /**
-     *
      * @return 当前系统时间 Date 类型
      */
     public static Date now() {
@@ -135,6 +145,7 @@ public final class DateUtils {
 
     /**
      * 给定 format 将当前系统时间转换成 string
+     *
      * @param format
      * @return
      */
@@ -144,6 +155,7 @@ public final class DateUtils {
 
     /**
      * 当前系统时间秒
+     *
      * @return
      */
     public static Long second() {
@@ -152,6 +164,7 @@ public final class DateUtils {
 
     /**
      * date 时间秒
+     *
      * @param date
      * @return
      */
@@ -161,6 +174,7 @@ public final class DateUtils {
 
     /**
      * localDate 时间秒
+     *
      * @param localDate
      * @return
      */
@@ -170,6 +184,7 @@ public final class DateUtils {
 
     /**
      * localDateTime 时间秒
+     *
      * @param localDateTime
      * @return
      */
@@ -179,6 +194,7 @@ public final class DateUtils {
 
     /**
      * 当前系统时间 毫秒
+     *
      * @return
      */
     public static Long time() {
@@ -187,6 +203,7 @@ public final class DateUtils {
 
     /**
      * 将 date 转换成 毫秒
+     *
      * @param date
      * @return
      */
@@ -196,6 +213,7 @@ public final class DateUtils {
 
     /**
      * 将localDate 转换成 毫秒
+     *
      * @param localDate
      * @return
      */
@@ -205,6 +223,7 @@ public final class DateUtils {
 
     /**
      * 将localDateTime 转换成 毫秒
+     *
      * @param localDateTime
      * @return
      */
@@ -214,6 +233,7 @@ public final class DateUtils {
 
     /**
      * 给定的date加days天
+     *
      * @param date
      * @param days
      * @return
@@ -227,6 +247,7 @@ public final class DateUtils {
 
     /**
      * 星期几
+     *
      * @return
      */
     public static int dayOfWeek() {
@@ -235,6 +256,7 @@ public final class DateUtils {
 
     /**
      * 星期几
+     *
      * @param localDate
      * @return
      */
@@ -244,6 +266,7 @@ public final class DateUtils {
 
     /**
      * 星期几
+     *
      * @param date
      * @return
      */
@@ -253,6 +276,7 @@ public final class DateUtils {
 
     /**
      * 当前时间距离下次某一时刻的时间差，单位:毫秒
+     *
      * @param data
      * @param period
      * @return
@@ -261,21 +285,20 @@ public final class DateUtils {
         long now = time();
         long time = data.getTime();
         // 给的时间大于当前时间
-        if(now < time) {
+        if (now < time) {
             // 时间差大于多个执行周期
-            if(time - now > period) {
+            if (time - now > period) {
                 return (time - now) % period;
             } else {
                 return time - now;
             }
         }
         // 给的时间小于当前时间
-        else if(now - time >= period) {
+        else if (now - time >= period) {
             // 时间差大于执行周期
             long slot = (now - time) % period;
             return 0 == slot ? 0 : period - slot;
-        }
-        else {
+        } else {
             // 时间差小于执行周期
             return period - (now - time);
         }
@@ -283,6 +306,7 @@ public final class DateUtils {
 
     /**
      * 当天几点钟时间
+     *
      * @param hour
      * @return
      */
@@ -295,6 +319,7 @@ public final class DateUtils {
 
     /**
      * 当天几点几分时间
+     *
      * @param hour
      * @param minute
      * @return
@@ -311,6 +336,7 @@ public final class DateUtils {
 
     /**
      * 当天几点几分几秒时间
+     *
      * @param hour
      * @param minute
      * @param second
@@ -344,6 +370,7 @@ public final class DateUtils {
 
     /**
      * 获取两个日期之间相差的天数
+     *
      * @param startDate
      * @param endDate
      * @return
@@ -358,6 +385,7 @@ public final class DateUtils {
 
     /**
      * 给定 毫秒时间戳 得出当天的开始时间毫秒
+     *
      * @param time
      * @return
      */
@@ -369,6 +397,7 @@ public final class DateUtils {
 
     /**
      * 获取 year,month月份的天数
+     *
      * @param year
      * @param month
      * @return
@@ -385,6 +414,7 @@ public final class DateUtils {
 
     /**
      * 获取指定时间所在月的开始时间
+     *
      * @param date
      * @return
      */
@@ -400,6 +430,7 @@ public final class DateUtils {
 
     /**
      * 获取指定时间所在月的结束时间
+     *
      * @param date
      * @return
      */
@@ -416,6 +447,7 @@ public final class DateUtils {
 
     /**
      * 获取指定时间所在周的开始时间
+     *
      * @param date
      * @return
      */
@@ -432,6 +464,7 @@ public final class DateUtils {
 
     /**
      * 获取指定时间所在周的结束时间
+     *
      * @param date
      * @return
      */
@@ -448,6 +481,7 @@ public final class DateUtils {
 
     /**
      * int -> 指定位数的 string
+     *
      * @param time
      * @return
      */

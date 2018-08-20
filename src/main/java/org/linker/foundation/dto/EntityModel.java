@@ -24,46 +24,58 @@ import java.util.Date;
 @MappedSuperclass
 @EntityListeners({EntityModel.DateEntityListener.class})
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class EntityModel implements Serializable{
+public abstract class EntityModel implements Serializable {
     private static final long serialVersionUID = 7191312967943387849L;
 
-    /** 主键ID **/
+    /**
+     * 主键ID
+     **/
     @Id
     @Column(name = "id", length = 32)
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
     public String id;
 
-    /** 创建时间 **/
+    /**
+     * 创建时间
+     **/
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_time")
     public Date createTime;
 
-    /** 更新时间 **/
+    /**
+     * 更新时间
+     **/
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "update_time")
     public Date updateTime;
 
-    /** 数据版本 **/
+    /**
+     * 数据版本
+     **/
     @Column(name = "v_data")
     public Long dataV;
 
 
     public static class DateEntityListener {
-        /** 当持久化对象更新时，在更新前就会执行这个函数，用于自动更新修改日期字段 */
+        /**
+         * 当持久化对象更新时，在更新前就会执行这个函数，用于自动更新修改日期字段
+         */
         @PreUpdate
         public void onPreUpdate(Object o) {
             if (o instanceof EntityModel) {
                 Date now = DateUtils.now();
                 EntityModel em = (EntityModel) o;
                 em.updateTime = now;
-                if(null == em.createTime) {
+                if (null == em.createTime) {
                     em.createTime = now;
                 }
             }
         }
 
-        /** 当保存一个entity对象时，在保存之前会执行这个函数，用于自动添加创建日期 */
+        /**
+         * 当保存一个entity对象时，在保存之前会执行这个函数，用于自动添加创建日期
+         */
         @PrePersist
         public void onPrePersist(Object o) {
             if (o instanceof EntityModel) {

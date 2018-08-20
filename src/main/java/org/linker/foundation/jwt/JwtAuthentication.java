@@ -25,6 +25,7 @@ public class JwtAuthentication {
     private final JWTCreator.Builder jwtBuilder;
     private final Verification verification;
     private final DesAlgorithm algorithm;
+
     private JwtAuthentication(String secret) {
         try {
             this.secret = secret;
@@ -43,7 +44,7 @@ public class JwtAuthentication {
         }
     }
 
-    private String joiner(Object ... objects) {
+    private String joiner(Object... objects) {
         return Joiner.on(":").join(objects);
     }
 
@@ -59,7 +60,7 @@ public class JwtAuthentication {
         if (msgList.size() == 3) {
             boolean even = 0 == (Long.parseLong(msgList.get(1)) % 2);
             AuthoritySession session = new AuthoritySession();
-            session.pubkeyCode = 200;
+            session.pubKeyCode = 200;
             session.userId = even ? msgList.get(0) : msgList.get(2);
             session.roleId = even ? msgList.get(2) : msgList.get(0);
             return session;
@@ -83,7 +84,7 @@ public class JwtAuthentication {
 
     public AuthoritySession verifySignature(String pubKey, String signature) {
         AuthoritySession session = verifyPubKey(pubKey);
-        if (200 == session.pubkeyCode) {
+        if (200 == session.pubKeyCode) {
             try {
                 JWTVerifier verifier = verification
                         .withClaim(PublicClaims.SUBJECT, joiner(session.userId, session.roleId))
