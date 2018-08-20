@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <offline>false</offline>
+
+  <pluginGroups>
+  </pluginGroups>
+
+  <proxies>
+  </proxies>
+
+  <servers>
+	<server>
+		<id>nexus-releases</id>
+	 	<username>ruanweimin</username>
+		<password>ruochu123</password>
+	</server>
+	<server>
+		<id>nexus-snapshots</id>
+		<username>ruanweimin</username>
+		<password>ruochu123</password>
+	</server>
+  </servers>
+
+  <mirrors>
+	<mirror> 
+		<id>nexus-releases</id>
+		<mirrorOf>*</mirrorOf>
+		<name>ruanweimin-nexus</name>
+        <url>http://192.168.50.140:8081/nexus/content/groups/public</url>
+    </mirror>
+  </mirrors>
+
+  <profiles>
+    <profile>
+        <id>nexus</id>
+        <repositories>
+		   <repository>
+              <id>nexus-snapshots</id>
+              <url>http://192.168.50.140:8081/nexus/content/repositories/snapshots</url>
+              <layout>default</layout>
+              <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+              </snapshots>
+            </repository>
+		 </repositories>
+  	</profile>
+  </profiles>
+  <activeProfiles>
+	<activeProfile>nexus</activeProfile>
+  </activeProfiles>
+  
+</settings>
