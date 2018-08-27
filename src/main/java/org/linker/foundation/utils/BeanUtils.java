@@ -32,7 +32,7 @@ public class BeanUtils {
     /**
      * 对象克隆
      **/
-    public static <Source, Target> Target map(final Source source, final Class<Target> destType) {
+    public static <Source, Target> Target castTo(final Source source, final Class<Target> destType) {
         if (source == null || destType == null) {
             return null;
         }
@@ -48,10 +48,10 @@ public class BeanUtils {
     /**
      * 集合对象克隆
      **/
-    public static <Source, Target> List<Target> map(final Collection<Source> sources, final Class<Target> targetType) {
+    public static <Source, Target> List<Target> castTo(final Collection<Source> sources, final Class<Target> targetType) {
         List<Target> targets = Lists.newArrayListWithExpectedSize(sources.size());
         for (Source source : sources) {
-            targets.add(map(source, targetType));
+            targets.add(castTo(source, targetType));
         }
         return targets;
     }
@@ -63,14 +63,14 @@ public class BeanUtils {
     }
 
     /**
-     * Bean转Map
+     * Map转Bean
      **/
     public static <T> T map2Bean(final Map<String, Object> source, final Class<T> clazz) {
         return JsonUtils.parseObject(new JSONObject(source).toString(), clazz);
     }
 
     /**
-     * Map转Bean
+     * Bean转Map
      **/
     public static Map<String, Object> bean2Map(Object source) {
         return (JSONObject) JSON.toJSON(source);
