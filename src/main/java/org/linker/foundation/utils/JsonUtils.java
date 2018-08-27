@@ -14,9 +14,7 @@ import java.util.List;
  */
 public class JsonUtils {
 
-    private JsonUtils() {
-
-    }
+    private JsonUtils() {}
 
     public static String toJSONString(final Object o, SerializerFeature... features) {
         SerializerFeature[] sfArray = !CollectionUtils.isNullOrEmpty(features) ? features : new SerializerFeature[]{
@@ -51,7 +49,7 @@ public class JsonUtils {
         return JSON.parseArray(text, clazz);
     }
 
-    public static JSONObject toJSon(final Object javaObject) {
+    public static JSONObject toJson(final Object javaObject) {
         return (JSONObject) JSON.toJSON(javaObject);
     }
 
