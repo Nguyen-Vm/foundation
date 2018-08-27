@@ -23,7 +23,11 @@ public final class MathUtils {
     public static String shuffleNum(int length) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < length; i++) {
-            sb.append(RANDOM.nextInt(10));
+            int num = RANDOM.nextInt(10);
+            while (i == 0 && num == 0) {
+                num = RANDOM.nextInt(10);
+            }
+            sb.append(num);
         }
         return sb.toString();
     }
@@ -31,18 +35,22 @@ public final class MathUtils {
     /**
      * val 是否在 from 和 to 之间
      *
-     * @param val
-     * @param from
-     * @param to
+     * @param compared
+     * @param begin
+     * @param end
      * @return
      */
-    public static boolean isBetween(final Number val, final Number from, final Number to) {
-        if (val == null || from == null || to == null) {
+    public static boolean isBetween(final Number compared, final Number begin, final Number end) {
+        if (compared == null || begin == null || end == null) {
             return false;
         }
-        BigDecimal valBD = new BigDecimal(String.valueOf(val));
-        return valBD.compareTo(new BigDecimal(String.valueOf(from))) >= 0
-                && valBD.compareTo(new BigDecimal(String.valueOf(to))) <= 0;
+        BigDecimal val = new BigDecimal(String.valueOf(compared));
+        BigDecimal from = new BigDecimal(String.valueOf(begin));
+        BigDecimal to = new BigDecimal(String.valueOf(end));
+        if (from.compareTo(to) > 0) {
+            throw new RuntimeException(String.format("begin: %s > end: %s", from, to));
+        }
+        return val.compareTo(from) >= 0 && val.compareTo(to) <= 0;
     }
 
     /**
@@ -53,8 +61,8 @@ public final class MathUtils {
      * @return
      */
     public static int ceil(final Long total, final Integer size) {
-        if (nvl(total) <= 0 || nvl(size) <= 0) {
-            return 0;
+        if (nvl(size) == 0) {
+            throw new ArithmeticException("/ by zero");
         }
         return (int) (Math.ceil(total.doubleValue() / size.doubleValue()));
     }
