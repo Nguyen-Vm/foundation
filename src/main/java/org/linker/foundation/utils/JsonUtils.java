@@ -4,7 +4,9 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializeFilter;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import org.springframework.core.io.ClassPathResource;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -55,6 +57,10 @@ public class JsonUtils {
 
     public static JSONObject parseObject(String text) {
         return JSON.parseObject(text);
+    }
+
+    public static String getResourceJSONString(String resource) throws IOException {
+        return ByteUtils.string(new ClassPathResource(resource).getInputStream());
     }
 
 }

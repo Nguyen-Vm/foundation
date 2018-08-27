@@ -11,6 +11,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.linker.foundation.JavaBean.User;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -90,5 +91,11 @@ public class JsonUtilsTest {
         System.out.println(JsonUtils.toJSONString(userList));
         List<User> users = JsonUtils.parseArray("[{\"age\":23,\"birthday\":\"2018-08-27 13:23:26\",\"id\":\"1\",\"name\":\"NguyenVm\"}]", User.class);
         System.out.println(JsonUtils.toJSONString(users));
+    }
+
+    @Test
+    public void getResourceJSONString() throws IOException {
+        String resourceJSONString = JsonUtils.getResourceJSONString("utils.json");
+        System.out.println(resourceJSONString);
     }
 }
