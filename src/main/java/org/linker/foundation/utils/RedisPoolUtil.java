@@ -89,19 +89,4 @@ public class RedisPoolUtil {
         return result;
     }
 
-    public static void main(String[] args) {
-        Jedis jedis = RedisPool.getResource();
-        RedisPoolUtil.set("nguyenKey", "nguyenValue");
-        RedisPoolUtil.set("del", "del");
-
-        String nguyenValue = RedisPoolUtil.get("nguyenKey");
-
-        RedisPoolUtil.setEx("nguyen", "nguyen", 1000 * 10);
-
-        RedisPoolUtil.expire("nguyenKey", 1000 * 10);
-
-        RedisPoolUtil.del("del");
-
-        System.out.println("End");
-    }
 }
