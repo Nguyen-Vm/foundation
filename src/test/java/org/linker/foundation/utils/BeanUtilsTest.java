@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.linker.foundation.JavaBean.User;
 import org.linker.foundation.JavaBean.WechatUser;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
