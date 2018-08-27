@@ -1,4 +1,4 @@
-package org.linker.foundation.common;
+package org.linker.foundation.provider.redis;
 
 import org.linker.foundation.utils.PropertiesUtils;
 import redis.clients.jedis.Jedis;

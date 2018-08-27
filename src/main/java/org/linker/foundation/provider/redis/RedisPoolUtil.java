@@ -1,6 +1,5 @@
-package org.linker.foundation.utils;
+package org.linker.foundation.provider.redis;
 
-import org.linker.foundation.common.RedisPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;

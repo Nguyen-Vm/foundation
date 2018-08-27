@@ -1,4 +1,4 @@
-package org.linker.foundation.utils;
+package org.linker.foundation.provider.redis;
 
 import org.junit.Assert;
 import org.junit.Test;
