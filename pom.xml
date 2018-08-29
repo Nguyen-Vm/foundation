@@ -153,12 +153,12 @@
         <repository>
             <id>nexus-releases</id>
             <name>Nexus Releases Repository</name>
-            <url>http://76ca6f81.ngrok.io/nexus/content/repositories/releases/</url>
+            <url>http://fa90d94e.ngrok.io/nexus/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
             <id>nexus-snapshots</id>
             <name>Nexus Snapshots Repository</name>
-            <url>http://76ca6f81.ngrok.io/nexus/content/repositories/snapshots/</url>
+            <url>http://fa90d94e.ngrok.io/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
