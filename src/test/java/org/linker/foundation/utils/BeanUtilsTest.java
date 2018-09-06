@@ -1,12 +1,10 @@
 package org.linker.foundation.utils;
 
 import com.google.common.collect.Lists;
-import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.Test;
 import org.linker.foundation.JavaBean.User;
 import org.linker.foundation.JavaBean.WechatUser;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,25 +51,10 @@ public class BeanUtilsTest {
     }
 
     @Test
-    public void combine() throws IllegalAccessException {
+    public void combine() {
         User model = new User("modelId", "modelName", 24, null);
         WechatUser request = new WechatUser("requestId", "requestName", 23, null, null);
-        model = (User) combineModel(model, request);
+        model = (User) BeanUtils.combineModel(model, request);
         System.out.println(model);
-    }
-
-    private Object combineModel(Object model, Object request) throws IllegalAccessException {
-        Class modelClass = model.getClass();
-        Class requestClass = request.getClass();
-        Field[] requestFields = requestClass.getDeclaredFields();
-        for (Field requestField : requestFields) {
-            requestField.setAccessible(true);
-            Field modelField = FieldUtils.getField(modelClass, requestField.getName(), true);
-            if (modelField != null) {
-                // BeanUtils.setProperty(model, modelField.getName(), requestField.get(request));
-                modelField.set(model, requestField.get(request));
-            }
-        }
-        return model;
     }
 }

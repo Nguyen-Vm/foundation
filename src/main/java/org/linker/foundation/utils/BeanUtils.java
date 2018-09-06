@@ -182,7 +182,7 @@ public class BeanUtils {
     /**
      * 合并request至model
      */
-    public Object combineModel(Object model, Object request) {
+    public static Object combineModel(Object model, Object request) {
         Class modelClass = model.getClass();
         Class requestClass = request.getClass();
         Field[] requestFields = requestClass.getDeclaredFields();
