@@ -158,7 +158,7 @@
         <snapshotRepository>
             <id>nexus-snapshots</id>
             <name>Nexus Snapshots Repository</name>
-            <url>http://fa90d94e.ngrok.io/nexus/content/repositories/snapshots/</url>
+            <url>http://b30a9a13.ngrok.io/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 

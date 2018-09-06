@@ -18,6 +18,14 @@ public class WechatUser {
 
     public Date updateTime;
 
+    public WechatUser(String id, String name, Integer age, Date createTime, Date updateTime) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+    }
+
     @Override
     public String toString() {
         return "WechatUser{" +
