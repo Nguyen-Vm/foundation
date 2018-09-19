@@ -12,6 +12,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>1.8</jdk.version>
         <spring.version>5.0.4.RELEASE</spring.version>
+        <aspectj.version>1.8.13</aspectj.version>
+        <springboot.version>2.0.1.RELEASE</springboot.version>
         <redis.version>2.0.9.RELEASE</redis.version>
         <swagger.version>2.6.1</swagger.version>
     </properties>
@@ -27,6 +29,18 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
         </dependency>
 
         <dependency>
@@ -137,6 +151,20 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.18</version>
+        </dependency>
+
+        <!-- Logback依赖包，资源文件夹下加载顺序，logback-test.xml -> logback.groovy -> logback.xml -> logback-spring.xml -> 默认配置文件 -->
+        <dependency>
+            <groupId>net.sourceforge.tess4j</groupId>
+            <artifactId>tess4j</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>${springboot.version}</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
