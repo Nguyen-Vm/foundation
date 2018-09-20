@@ -1,22 +1,34 @@
 package org.linker.foundation.web;
 
 import org.linker.foundation.dto.exception.AppException;
+import org.linker.foundation.resolver.AuthorityArgumentResolver;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * @author RWM
  * @date 2018/6/7
  */
-public abstract class WebConfigureSupport {
+public abstract class WebConfigureSupport extends WebMvcConfigurationSupport {
+
+    /**
+     * HTTP 参数注入
+     **/
+    @Override
+    protected void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+        argumentResolvers.add(new AuthorityArgumentResolver());
+    }
 
     /**
      * 全局异常处理

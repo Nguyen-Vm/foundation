@@ -29,6 +29,14 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -187,12 +195,12 @@
         <repository>
             <id>nexus-releases</id>
             <name>Nexus Releases Repository</name>
-            <url>http://d315eb53.ngrok.io/nexus/content/repositories/releases/</url>
+            <url>http://c17a447c.ngrok.io/nexus/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
             <id>nexus-snapshots</id>
             <name>Nexus Snapshots Repository</name>
-            <url>http://d315eb53.ngrok.io/nexus/content/repositories/snapshots/</url>
+            <url>http://c17a447c.ngrok.io/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
