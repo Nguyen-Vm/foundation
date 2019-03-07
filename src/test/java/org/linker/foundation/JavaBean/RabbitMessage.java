@@ -8,6 +8,7 @@ public class RabbitMessage {
     public String name;
     public String phone;
     public Integer age;
+    public String createTime;
 
     @Override
     public String toString() {
@@ -15,6 +16,7 @@ public class RabbitMessage {
                 "name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", age=" + age +
+                ", createTime=" + createTime +
                 '}';
     }
 }

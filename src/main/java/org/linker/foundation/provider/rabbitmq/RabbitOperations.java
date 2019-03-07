@@ -35,7 +35,9 @@ public class RabbitOperations {
     public final Channel channel;
 
     public RabbitOperations(String mqUri) throws IOException {
+        // 创建broker连接
         this.connection = RabbitConnection.create(mqUri);
+        // 创建channel
         this.channel = connection.createChannel();
     }
 
@@ -47,8 +49,11 @@ public class RabbitOperations {
      */
     public void producer(Enum topic, Object message) {
         try {
+            //
             AMQP.BasicProperties props = propertyOf(message, true);
+            // direct 交换器
             channel.exchangeDeclare(topic.name(), "direct", true);
+            // 发布消息
             channel.basicPublish(topic.name(), topic.name(), props, JSON.toJSONBytes(message));
         } catch (Exception e) {
             throw new RuntimeException("rabbitmq send direct msg error: ", e);

@@ -1,22 +1,20 @@
 package org.linker.foundation.provider.rabbitmq;
 
 import com.alibaba.fastjson.JSON;
-import org.junit.Test;
 import org.linker.foundation.JavaBean.RabbitMessage;
 import org.linker.foundation.JavaBean.RabbitTopic;
 
 import java.io.IOException;
 
 /**
- * @author RWM
- * @date 2018/8/27
- */
-public class RabbitOperationsTest {
+ * @Author nguyenruan@ostay.cc
+ * @Date 2019/3/7 19:53
+ **/
+public class Consumer {
 
     private static final String MQ_URI = "AMQP://guest:guest@localhost:5672/rabbitmq";
 
-    @Test
-    public void main() throws IOException {
+    public static void main(String[] args) throws IOException {
         RabbitOperations rabbitOperations = new RabbitOperations(MQ_URI);
 
         // 消费
@@ -30,13 +28,5 @@ public class RabbitOperationsTest {
                 return null;
             }
         });
-
-        // 生产
-        RabbitMessage request = new RabbitMessage();
-        request.name = "阮威敏";
-        request.age = 23;
-        request.phone = "17301747367";
-        rabbitOperations.producer(RabbitTopic.DeveloperAction, request);
-
     }
 }

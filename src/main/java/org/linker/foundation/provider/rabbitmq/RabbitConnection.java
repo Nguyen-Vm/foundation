@@ -11,6 +11,11 @@ public final class RabbitConnection {
 
     private RabbitConnection() {}
 
+    /**
+     * 创建新的broker连接
+     * @param mqUri "AMQP://${username}:${password}@${host}:${port}/${virtual host}";
+     * @return
+     */
     public static synchronized Connection create(String mqUri) {
         try {
             ConnectionFactory factory = new ConnectionFactory();
